@@ -63,6 +63,15 @@ function Counter({ to, suffix = "", duration = 1600 }) {
 
 /* ---------- data ---------- */
 const NAV_LINKS = ["Home", "About", "Services", "Industries", "Pricing", "Gallery", "Contact"];
+const NAV_ROUTES = {
+  Home: "/",
+  About: "/about",
+  Services: "/services",
+  Industries: "/industries",
+  Pricing: "/pricing",
+  Gallery: "/gallery",
+  Contact: "/contact",
+};
 
 const SERVICES = [
   { icon: Building2, title: "Commercial Facility Cleaning", desc: "Daily, nightly, and scheduled janitorial programs for offices, retail, and corporate campuses." },
@@ -150,10 +159,10 @@ export default function App() {
         transition: "all 0.35s ease"
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <img src={LOGO_SRC} alt="Alliance Facility Group" style={{ height: 48, objectFit: "contain" }} />
+          <a href="/" aria-label="Alliance Facility Group home"><img src={LOGO_SRC} alt="Alliance Facility Group" style={{ height: 48, objectFit: "contain" }} /></a>
           <div style={{ display: "flex", gap: 32, alignItems: "center" }} className="hidden md:flex">
             {NAV_LINKS.map(l => (
-              <a key={l} href="#" style={{ fontSize: 14, fontWeight: 500, color: "#374151", textDecoration: "none" }}
+              <a key={l} href={NAV_ROUTES[l]} style={{ fontSize: 14, fontWeight: 500, color: "#374151", textDecoration: "none" }}
                  onMouseEnter={e => e.currentTarget.style.color = "#1D4ED8"}
                  onMouseLeave={e => e.currentTarget.style.color = "#374151"}>
                 {l}
@@ -162,10 +171,10 @@ export default function App() {
           </div>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             <button style={{ display: "none" }} className="md:inline-flex" />
-            <button className="btn-primary" style={{
+            <a href="/book" className="btn-primary" style={{
               background: "linear-gradient(135deg,#1E40AF,#3B82F6)", color: "#fff", border: "none",
-              padding: "10px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer"
-            }}>Book a Service</button>
+              padding: "10px 20px", borderRadius: 10, fontSize: 14, fontWeight: 600, cursor: "pointer", textDecoration: "none"
+            }}>Book a Service</a>
             <button onClick={() => setNavOpen(!navOpen)} style={{ background: "none", border: "none", cursor: "pointer" }} className="md:hidden">
               {navOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -173,7 +182,7 @@ export default function App() {
         </div>
         {navOpen && (
           <div style={{ padding: "12px 24px 20px", display: "flex", flexDirection: "column", gap: 14, background: "#fff", borderTop: "1px solid #eee" }}>
-            {NAV_LINKS.map(l => <a key={l} href="#" style={{ fontSize: 15, color: "#374151", textDecoration: "none" }}>{l}</a>)}
+            {NAV_LINKS.map(l => <a key={l} href={NAV_ROUTES[l]} style={{ fontSize: 15, color: "#374151", textDecoration: "none" }}>{l}</a>)}
           </div>
         )}
       </nav>
@@ -209,15 +218,15 @@ export default function App() {
           </Reveal>
           <Reveal delay={300}>
             <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-              <button className="btn-primary" style={{
+              <a href="/book" className="btn-primary" style={{
                 background: "linear-gradient(135deg,#2563EB,#60A5FA)", color: "#fff", border: "none",
                 padding: "15px 30px", borderRadius: 12, fontSize: 15, fontWeight: 600, cursor: "pointer",
-                display: "flex", alignItems: "center", gap: 8
-              }}>Book a Cleaning <ArrowRight size={16} /></button>
-              <button className="btn-primary" style={{
+                display: "flex", alignItems: "center", gap: 8, textDecoration: "none"
+              }}>Book a Cleaning <ArrowRight size={16} /></a>
+              <a href="/quote" className="btn-primary" style={{
                 background: "rgba(255,255,255,0.08)", color: "#fff", border: "1px solid rgba(255,255,255,0.25)",
-                padding: "15px 30px", borderRadius: 12, fontSize: 15, fontWeight: 600, cursor: "pointer"
-              }}>Request a Facility Quote</button>
+                padding: "15px 30px", borderRadius: 12, fontSize: 15, fontWeight: 600, cursor: "pointer", textDecoration: "none"
+              }}>Request a Facility Quote</a>
             </div>
           </Reveal>
         </div>
@@ -434,8 +443,8 @@ export default function App() {
           <h2 className="font-display" style={{ fontSize: 32, fontWeight: 700, margin: "0 0 16px" }}>Ready for a cleaner, stronger space?</h2>
           <p style={{ color: "#C7D2E8", maxWidth: 520, margin: "0 auto 32px" }}>Book a residential visit in minutes, or get a scoped facility quote from our commercial team today.</p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <button className="btn-primary" style={{ background: "#fff", color: "#0F2A5C", border: "none", padding: "15px 30px", borderRadius: 12, fontWeight: 600, cursor: "pointer" }}>Book a Service</button>
-            <button className="btn-primary" style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", padding: "15px 30px", borderRadius: 12, fontWeight: 600, cursor: "pointer" }}>Request a Quote</button>
+            <a href="/book" className="btn-primary" style={{ background: "#fff", color: "#0F2A5C", border: "none", padding: "15px 30px", borderRadius: 12, fontWeight: 600, cursor: "pointer", textDecoration: "none" }}>Book a Service</a>
+            <a href="/quote" className="btn-primary" style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", padding: "15px 30px", borderRadius: 12, fontWeight: 600, cursor: "pointer", textDecoration: "none" }}>Request a Quote</a>
           </div>
         </Reveal>
       </section>
