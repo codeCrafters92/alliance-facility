@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
+import { CleaningSiteLoader, ScrollCleaningProgress } from "../components/SiteExperience";
 
 const Home = lazy(() => import("../pages/Home"));
 const About = lazy(() => import("../pages/About"));
@@ -52,6 +53,8 @@ export default function App() {
 
   return (
     <>
+      <CleaningSiteLoader />
+      <ScrollCleaningProgress />
       <ScrollToTop />
       <Suspense fallback={<LoadingScreen />}>
         <AnimatePresence mode="wait">

@@ -65,7 +65,7 @@ export function Reveal({ children, delay = 0, className = "" }) {
   return (
     <div
       ref={ref}
-      className={className}
+      className={`clean-reveal ${shown ? "is-shown" : ""} ${className}`}
       style={{
         transform: shown ? "translateY(0)" : "translateY(28px)",
         opacity: shown ? 1 : 0,
