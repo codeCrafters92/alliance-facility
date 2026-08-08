@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { LOGO_SRC } from "../lib/logo";
+import CleaningEffects from "./CleaningEffects";
 
 export const theme = {
   navy: "#0F2A5C",
@@ -179,8 +180,9 @@ export function Footer() {
 
 export function PageHero({ eyebrow, title, subtitle }) {
   return (
-    <header style={{ background: "linear-gradient(135deg,#0B1E42,#123268)", padding: "72px 24px", textAlign: "center", color: "#fff" }}>
-      <Reveal>
+    <header style={{ position: "relative", overflow: "hidden", background: "linear-gradient(135deg,#0B1E42,#123268)", padding: "72px 24px", textAlign: "center", color: "#fff" }}>
+      <CleaningEffects light />
+      <Reveal className="page-hero-content">
         {eyebrow && <span style={{ display: "inline-block", padding: "6px 16px", borderRadius: 999, background: "rgba(59,130,246,0.15)", border: "1px solid rgba(96,165,250,0.35)", color: "#93C5FD", fontSize: 13, fontWeight: 600, marginBottom: 20 }}>{eyebrow}</span>}
         <h1 className="font-display" style={{ fontSize: "clamp(30px,5vw,46px)", fontWeight: 700, margin: "0 0 14px" }}>{title}</h1>
         {subtitle && <p style={{ color: "#C7D2E8", maxWidth: 600, margin: "0 auto", lineHeight: 1.7 }}>{subtitle}</p>}
